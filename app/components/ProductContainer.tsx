@@ -3,7 +3,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import { useProductContext } from "@/context/Product/ProductContextProvider";
-import TotalPrice from "components/TotalPrice";
+import TotalPrice from "@/components/TotalPrice";
 
 const ProductContainer = () => {
   const { products, totalPrice } = useProductContext();

@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useReducer, useEffect, createContext, useContext } from "react";
-import { orderReducer } from "./ProductContext";
+import { orderReducer } from "./helper";
 import { Product } from "@/types/types";
 import { WithChildren } from "@/types/types";
-import { ProductDispatchContext } from "./ProductContext";
 
 const initialProducts: Product[] = [];
 
@@ -21,6 +20,8 @@ const ProductContext = createContext<IProductContext>({
   handleTotalPrice: () => {},
   totalPrice: 0,
 });
+
+const ProductDispatchContext = createContext({});
 
 
 export const ProductContextProvider = ({ children }: WithChildren) => {
@@ -59,3 +60,7 @@ export const ProductContextProvider = ({ children }: WithChildren) => {
 
 
 export const useProductContext = () => useContext(ProductContext);
+
+export const useProductDispatch = () => {
+  return useContext(ProductDispatchContext);
+};

@@ -1,14 +1,5 @@
 import { ORDER_ACTION, Product, CartActions } from "@/types/types";
-import { createContext, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-
-
-export const ProductDispatchContext = createContext({});
-
-export const useProductDispatch = () => {
-  return useContext(ProductDispatchContext);
-};
-
 
 export const orderReducer = (currentProducts: Product[], action: CartActions) => {
   switch (action.type) {

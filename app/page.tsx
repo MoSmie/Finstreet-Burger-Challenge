@@ -1,5 +1,5 @@
-import ProductContainer from "../components/ProductContainer";
-import AddOrder from "../components/AddOrder";
+import ProductContainer from "./components/ProductContainer";
+import AddOrder from "./components/AddOrder";
 import Link from "next/link";
 
 export default function Home() {

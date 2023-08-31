@@ -1,7 +1,7 @@
 import React from "react";
-import { Product, ORDER_ACTION } from "../app/types/types";
-import { useProductDispatch } from "@/context/Product/ProductContext";
-import { burgerPrices, sizeRate } from "../app/utils/utils";
+import { Product, ORDER_ACTION } from "../types/types";
+import { useProductDispatch } from "@/context/Product/ProductContextProvider";
+import { burgerPrices, sizeRate } from "../utils/utils";
 
 interface IProps {
   product: Product;

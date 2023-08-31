@@ -1,8 +1,8 @@
 "use client";
 
-import { useProductDispatch } from "@/context/Product/ProductContext";
-import SizeForm from "components/SizeForm";
-import BurgerForm from "components/BurgerForm";
+import { useProductDispatch } from "@/context/Product/ProductContextProvider";
+import SizeForm from "@/components/SizeForm";
+import BurgerForm from "@/components/BurgerForm";
 import React, { useState } from "react";
 import { ORDER_ACTION } from "@/types/types";
 
