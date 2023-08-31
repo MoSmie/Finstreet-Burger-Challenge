@@ -5,8 +5,9 @@ import { useProductContext } from "@/context/Product/ProductContextProvider";
 import { sizeRate, burgerPrices } from "@/utils/utils";
 
 const TotalPrice = () => {
-  const { products, isPromo } = useProductContext();
-  const [totalPrice, setTotalPrice] = useState(0);
+  const { products, promotionProducts, handleTotalPrice, totalPrice } =
+    useProductContext();
+
   const [useDiscount, setUseDiscount] = useState(false);
   const [useDiscountAmount, setUseDiscountAmount] = useState(0);
 
@@ -19,23 +20,41 @@ const TotalPrice = () => {
           sizeRate[curr.size]
       );
     }, 0);
+
     if (useDiscount) {
       let discount = countBurger * 0.8;
-      setUseDiscountAmount(countBurger * 0.2)
-      setTotalPrice(discount.toFixed(2));
+      setUseDiscountAmount(Number((countBurger * 0.2).toFixed(2)));
+      handleTotalPrice(Number(discount.toFixed(2)));
     } else {
-       setTotalPrice(countBurger);
+      handleTotalPrice(countBurger);
     }
   }, [products, useDiscount]);
+
+  const promotionCount = () => {
+    return promotionProducts.reduce((acc, curr) => {
+      return acc += curr.count / 2 * burgerPrices[curr.burger] * sizeRate[curr.size];
+    }, 0);
+  };
 
   return (
     <div className="flex flex-row gap-10">
       <div className="text-center text-slate-500">
-        totalPrice: <span className="text-xl text-white">{totalPrice}</span>
+        totalPrice: <span className="text-xl text-white">{totalPrice} €</span>
       </div>
       <div className="text-center text-red-300 ">
-        <div>{isPromo ? "2 in Price of 1!" : null}</div>
-        <div>{!useDiscount ? <button className="bg-slate-500 rounded-md h-11 p-2" onClick={() => setUseDiscount(true)}>Discount Applied!</button> : `-20% has been added --> ${useDiscountAmount}`}</div>
+        <div>{promotionProducts.length ? `2 in Price of 1!  --> Promotion of: ${promotionCount()} €` : null}</div>
+        <div>
+          {!useDiscount ? (
+            <button
+              className="bg-slate-500 rounded-md h-11 p-2"
+              onClick={() => setUseDiscount(true)}
+            >
+              Apply 20% Discount!
+            </button>
+          ) : (
+            `-20% has been added --> discount of: ${useDiscountAmount} €`
+          )}
+        </div>
       </div>
     </div>
   );

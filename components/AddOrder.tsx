@@ -4,7 +4,7 @@ import { useProductDispatch } from "@/context/Product/ProductContext";
 import SizeForm from "components/SizeForm";
 import BurgerForm from "components/BurgerForm";
 import React, { useState } from "react";
-import { ORDER_ACTION } from "@/types/product";
+import { ORDER_ACTION } from "@/types/types";
 
 const AddOrder = () => {
   const [burger, setBurger] = useState<string>("");

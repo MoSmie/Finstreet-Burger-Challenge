@@ -1,5 +1,5 @@
 import React from "react";
-import { Product, ORDER_ACTION } from "../app/types/product";
+import { Product, ORDER_ACTION } from "../app/types/types";
 import { useProductDispatch } from "@/context/Product/ProductContext";
 import { burgerPrices, sizeRate } from "../app/utils/utils";
 
@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const ProductCard = ({ product }: IProps) => {
-  const { dispatch } = useProductDispatch();
+  const dispatch = useProductDispatch();
 
   return (
     <div className="flex gap-4">
@@ -25,15 +25,14 @@ const ProductCard = ({ product }: IProps) => {
           </span>{" "}
         </p>
       </div>
-
       <button
         className="bg-slate-500 rounded-md h-11 p-2"
-        onClick={() =>
+        onClick={() => {
           dispatch({
             type: ORDER_ACTION.DELETE_PRODUCT,
             payload: { id: product.id },
-          })
-        }
+          });
+        }}
       >
         Delete
       </button>

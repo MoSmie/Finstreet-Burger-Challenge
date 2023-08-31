@@ -1,7 +1,6 @@
-import { ORDER_ACTION, Product, CartActions } from "@/types/product";
+import { ORDER_ACTION, Product, CartActions } from "@/types/types";
 import { createContext, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-
 
 
 export const ProductDispatchContext = createContext({});

@@ -6,7 +6,7 @@ import { useProductContext } from "@/context/Product/ProductContextProvider";
 import TotalPrice from "components/TotalPrice";
 
 const ProductContainer = () => {
-  const { products } = useProductContext();
+  const { products, totalPrice } = useProductContext();
 
   if (products.length === 0)
     return <h3 className="text-center p-5">No Product Added Yet!</h3>

@@ -1,5 +1,3 @@
-
-
 export const burgerPrices: Record<string, number>= {
   Hamburger: 5.0,
   Cheesseburger: 6.0,

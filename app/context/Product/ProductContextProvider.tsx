@@ -2,32 +2,41 @@
 
 import React, { useState, useReducer, useEffect, createContext, useContext } from "react";
 import { orderReducer } from "./ProductContext";
-import { Product } from "@/types/product";
-import { WithChildren } from "@/types/component";
+import { Product } from "@/types/types";
+import { WithChildren } from "@/types/types";
 import { ProductDispatchContext } from "./ProductContext";
 
 const initialProducts: Product[] = [];
 
 interface IProductContext {
   products: Product[];
-  isPromo: boolean;
+  promotionProducts: Product[];
+  handleTotalPrice: (price: number) => void;
+  totalPrice: number;
 }
 
 const ProductContext = createContext<IProductContext>({
   products: [],
-  isPromo: false,
+  promotionProducts: [],
+  handleTotalPrice: () => {},
+  totalPrice: 0,
 });
 
 
 export const ProductContextProvider = ({ children }: WithChildren) => {
   const [products, dispatch] = useReducer(orderReducer, initialProducts);
-  const [isPromo, setPromo] = useState(false);
+  const [promotionProducts, setPromotionProducts] = useState<Product[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const handleTotalPrice = (price: number) => {
+    setTotalPrice(price);
+  };
 
   useEffect(() => {
-    const existingItemIndex = products.find((item) => item.count === 2);
+    const filterObj = products.filter((product) => product.count % 2 == 0);
 
-    if (existingItemIndex) {
-      setPromo(true);
+    if (filterObj.length) {
+      setPromotionProducts(filterObj);
     }
   }, [products]);
 
@@ -36,7 +45,9 @@ export const ProductContextProvider = ({ children }: WithChildren) => {
     <ProductContext.Provider
       value={{
         products,
-        isPromo,
+        promotionProducts,
+        handleTotalPrice,
+        totalPrice
       }}
     >
       <ProductDispatchContext.Provider value={dispatch}>

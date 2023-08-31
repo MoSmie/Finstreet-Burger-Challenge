@@ -11,7 +11,7 @@ export default function Home() {
         </h1>
 
         <div>
-          <div className="flex flex-row gap-8">
+          <div className="flex flex-row gap-8 mb-8">
             <div className="basis-1/2 rounded-lg	border border-slate-300 p-8">
               <AddOrder />
             </div>
@@ -21,13 +21,12 @@ export default function Home() {
           </div>
 
           <Link
-            className="text-white bg-gray-500 p-2 rounded-lg mt-3"
+            className="text-white bg-gray-500 p-2 rounded-lg"
             href="/checkout"
           >
             Checkout
           </Link>
         </div>
-
       </div>
     </main>
   );

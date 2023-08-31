@@ -1,3 +1,9 @@
+import { ReactNode } from 'react';
+
+export interface WithChildren {
+  children: ReactNode;
+}
+
 export interface Product {
   burger: string;
   size: string;
