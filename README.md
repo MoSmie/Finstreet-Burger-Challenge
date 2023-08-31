@@ -1,5 +1,10 @@
 # Finstreet Burger Challenge
 
+
+## ----> Challenge has been developed with typescript, tailwind and next 13 <--------
+
+
+
 ## Task
 We are working at a burger place and have to create a UI for our customers to order their burgers. The burger place offers three different burgers with the following prices:
 
@@ -10,12 +15,12 @@ We are working at a burger place and have to create a UI for our customers to or
 which all come in three different sizes that modify the price by a factor:
 
 - small (s) --> * 0.7
-- medium (m) --> * 1.0 
+- medium (m) --> * 1.0
 - large (l) --> * 1.3
 
 The customer wants to add multiple burgers to his order and select a different size for each burger. Since the customer does not want to rely on his own math skills we should provide him with the display to see all burgers he ordered with the actual price of the burger.
 
-To stay competitive with other burger restaurants we offer several ways to our customer to save money. There are different promotion codes that will offer two specific burgers to the price of one burger to the customer. Additionally, we want to offer the customer discount codes which deduct a percentage amount of the whole order price. Our manager wants the customer to add exactly one promotion code and one discount code to his order. The checkout display should show the price reduction from the promotion and discount code. 
+To stay competitive with other burger restaurants we offer several ways to our customer to save money. There are different promotion codes that will offer two specific burgers to the price of one burger to the customer. Additionally, we want to offer the customer discount codes which deduct a percentage amount of the whole order price. Our manager wants the customer to add exactly one promotion code and one discount code to his order. The checkout display should show the price reduction from the promotion and discount code.
 
 After confirming the order we want to redirect the customer to a success page and show him that his order was successful, and he will receive his order soon.
 
